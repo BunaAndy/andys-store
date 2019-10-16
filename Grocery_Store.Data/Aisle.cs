@@ -8,5 +8,6 @@ namespace Grocery_Store.Data
     {
         public int AisleId { get; set; }
         public List<Product> Products { get; } = new List<Product>();
+        public string Tag { get; set; }
     }
 }

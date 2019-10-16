@@ -12,7 +12,7 @@ using Grocery_Store.Web.Models;
 
 namespace Grocery_Store.Web.Controllers
 {
-    public class AisleController
+    public class AisleController : Controller
     {
         private readonly ILogger<AisleController> _logger;
 
@@ -39,11 +39,35 @@ namespace Grocery_Store.Web.Controllers
 
             aisles = JsonConvert.DeserializeObject<List<Aisle>>(resp);
 
-            var aisleViewModel = new AisleViewModel
+            var aisleViewModel = new AislesViewModel
             {
                 Aisles = aisles
             };
             return View(aisleViewModel);
         }
+
+        [Route("/aisle/{aisleId}")]
+        public async Task<IActionResult> Aisle(int aisleId)
+        {
+            HttpClient client = new HttpClient();
+            string resp = "";
+            HttpResponseMessage response = await client.GetAsync("https://localhost:44349/aisle/" + aisleId);
+            if (response.IsSuccessStatusCode)
+            {
+                resp = await response.Content.ReadAsStringAsync();
+            }
+
+            var aisle = JsonConvert.DeserializeObject<Aisle>(resp);
+
+
+            var aisleViewModel = new AisleViewModel
+            {
+                Aisle = aisle
+            };
+
+            return View(aisleViewModel);
+        }
+
+
     }
 }

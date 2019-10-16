@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace Grocery_Store.Web.Models
 {
-    public class Aisle
+    public class AislesViewModel
     {
-        public int AisleId { get; set; }
-        public List<Product> Products { get; } = new List<Product>();
+        public List<Aisle> Aisles { get; set; }
         public string Tag { get; set; }
     }
 }
