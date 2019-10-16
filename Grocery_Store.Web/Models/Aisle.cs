@@ -7,5 +7,7 @@ namespace Grocery_Store.Web.Models
 {
     public class Aisle
     {
+        public int AisleId { get; set; }
+        public List<Product> Products { get; } = new List<Product>();
     }
 }

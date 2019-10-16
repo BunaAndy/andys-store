@@ -61,6 +61,7 @@ namespace Grocery_Store.Web.Controllers
             };
             return View(productViewModel);
         }
+
         [Route("/product/{productId}")]
         public async Task<IActionResult> Product(string productId)
         {

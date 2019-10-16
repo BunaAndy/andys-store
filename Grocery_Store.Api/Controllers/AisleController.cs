@@ -45,6 +45,7 @@ namespace Grocery_Store.Api.Controllers
             return aisle.ToList();
         }
 
+        [HttpGet("/aisle")]
         public List<Aisle> Get()
         {
             StoreContext storeContext = new StoreContext();
