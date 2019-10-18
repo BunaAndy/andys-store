@@ -12,14 +12,12 @@ namespace Grocery_Store.Web.Controllers
     {
         private readonly ILogger<ProductController> _logger;
 
-        public ProductController(ILogger<ProductController> logger)
+        private readonly IHttpClientFactory clientFactory;
+
+        public ProductController(ILogger<ProductController> logger, IHttpClientFactory _clientFactory)
         {
             _logger = logger;
-        }
-
-        static ProductController()
-        {
-            
+            clientFactory = _clientFactory;
         }
 
         //[Route("/product")]
@@ -40,7 +38,7 @@ namespace Grocery_Store.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = clientFactory.CreateClient();
             string resp = "";
             List<Product> products;
             HttpResponseMessage response = await client.GetAsync("https://localhost:44349/product");
@@ -61,7 +59,7 @@ namespace Grocery_Store.Web.Controllers
         [Route("/product/{productId}")]
         public async Task<IActionResult> Product(string productId)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = clientFactory.CreateClient();
             string resp = "";
             Product product;
             HttpResponseMessage response = await client.GetAsync("https://localhost:44349/product/" + productId);

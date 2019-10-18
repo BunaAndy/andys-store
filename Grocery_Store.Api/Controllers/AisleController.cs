@@ -38,11 +38,18 @@ namespace Grocery_Store.Api.Controllers
         }
 
         [HttpGet("/aisle/{aisleId}")]
-        public List<Product> Get(int aisleId)
+        public Aisle Get(int aisleId)
         {
             StoreContext storeContext = new StoreContext();
-            var aisle = storeContext.Products.Where(products => products.AisleId == aisleId);
-            return aisle.ToList();
+            var aisles = storeContext.Aisles.Where(aisles => aisles.AisleId == aisleId);
+            var products = storeContext.Products.Where(product => product.AisleId == aisleId);
+            var aislesList = aisles.ToList();
+
+            var aisle = aislesList[0];
+            aisle.Products = products.ToList();
+            aisle.Tag = aislesList[0].Tag;
+
+            return aisle;
         }
 
         [HttpGet("/aisle")]

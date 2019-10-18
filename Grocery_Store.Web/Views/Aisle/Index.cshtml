@@ -1,4 +1,4 @@
-﻿@model AisleViewModel
+﻿@model AislesViewModel
 @{
     ViewData["Title"] = "Aisle";
 }
@@ -11,7 +11,7 @@
                 @Html.DisplayNameFor(model => model.Aisles[0].AisleId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aisles[0].Products)
+                @Html.DisplayNameFor(model => model.Aisles[0].Tag)
             </th>
             <th></th>
         </tr>
@@ -21,10 +21,10 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayFor(modelItem => item.AisleId)
+                    <a asp-action="@item.AisleId" >@Html.DisplayFor(modelItem => item.AisleId)</a>
                 </th>
                 <th>
-                    @Html.DisplayFor(modelItem => item.Products)
+                    @Html.DisplayFor(modelItem => item.Tag)
                 </th>
             </tr>
         }

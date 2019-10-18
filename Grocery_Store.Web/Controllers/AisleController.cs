@@ -16,19 +16,17 @@ namespace Grocery_Store.Web.Controllers
     {
         private readonly ILogger<AisleController> _logger;
 
-        public AisleController(ILogger<AisleController> logger)
+        private readonly IHttpClientFactory clientFactory;
+
+        public AisleController(ILogger<AisleController> logger, IHttpClientFactory _clientFactory)
         {
             _logger = logger;
-        }
-
-        static AisleController()
-        {
-
+            clientFactory = _clientFactory;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = clientFactory.CreateClient();
             string resp = "";
             List<Aisle> aisles;
             HttpResponseMessage response = await client.GetAsync("https://localhost:44349/aisle");
@@ -49,7 +47,7 @@ namespace Grocery_Store.Web.Controllers
         [Route("/aisle/{aisleId}")]
         public async Task<IActionResult> Aisle(int aisleId)
         {
-            HttpClient client = new HttpClient();
+            HttpClient client = clientFactory.CreateClient();
             string resp = "";
             HttpResponseMessage response = await client.GetAsync("https://localhost:44349/aisle/" + aisleId);
             if (response.IsSuccessStatusCode)
