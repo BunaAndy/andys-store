@@ -20,7 +20,7 @@ namespace Grocery_Store.Api.Controllers
 
         [HttpPost]
 
-        public Aisle Post(Aisle aisle)
+        public Aisle AddAisle(Aisle aisle)
         {
 
             // add to database
@@ -59,6 +59,16 @@ namespace Grocery_Store.Api.Controllers
             var aisle = storeContext.Aisles;
             return aisle.ToList();
         }
+
+        //[HttpPost("/aisle/{aisleId}/changeTag/{description}")]
+        //public string Buy(int aisleId, string description)
+        //{
+        //    StoreContext storeContext = new StoreContext();
+        //    var aisle = storeContext.Aisles.SingleOrDefault(aisles => aisles.AisleId == aisleId);
+        //    aisle.Tag = description;
+        //    storeContext.SaveChanges();
+        //    return aisle.Tag;
+        //}
 
     }
 }

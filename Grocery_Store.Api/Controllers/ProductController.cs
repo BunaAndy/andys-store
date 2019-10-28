@@ -27,7 +27,7 @@ namespace Grocery_Store.Api.Controllers
 
         [HttpPost]
 
-        public Product Post(Product product)
+        public Product AddProduct(Product product)
         {
 
             // add to database
@@ -62,7 +62,7 @@ namespace Grocery_Store.Api.Controllers
             return product;
         }
 
-        [HttpPost("/product/{productId}/buy/{amount}")]
+        [HttpPost]
         public int Buy(int productId, int amount)
         {
             StoreContext storeContext = new StoreContext();
@@ -72,11 +72,11 @@ namespace Grocery_Store.Api.Controllers
             return product.Amount;
         }
 
-        [HttpPost("/product/remove/{productId}")]
-        public Product Remove(int productId)
+        [HttpPost]
+        public Product Remove(Product product)
         {
             StoreContext storeContext = new StoreContext();
-            var product = storeContext.Products.SingleOrDefault(products => products.ProductID == productId);
+            var productRemove = storeContext.Products.SingleOrDefault(products => products.ProductID == product.ProductID);
             Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Product> test = storeContext.Products.Remove(product);
             storeContext.SaveChanges();
             return product;

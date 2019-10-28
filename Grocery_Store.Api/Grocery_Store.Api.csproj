@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Grocery_Store.Data\Grocery_Store.Data.csproj" />
+    <ProjectReference Include="Newtonsoft.Json"/>
   </ItemGroup>
 
 </Project>

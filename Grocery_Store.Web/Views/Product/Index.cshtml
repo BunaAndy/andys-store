@@ -37,9 +37,13 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
+                    <a asp-action="Remove">Remove</a>
                 </td>
             </tr>
             }
         </tbody>
     </table>
+    
+<a href="https://localhost:44309/Product/AddProduct">
+    <input type="button" value="Add a Product">
+</a>

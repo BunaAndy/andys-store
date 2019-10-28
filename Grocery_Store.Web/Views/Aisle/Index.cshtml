@@ -21,7 +21,7 @@
         {
             <tr>
                 <th>
-                    <a asp-action="@item.AisleId" >@Html.DisplayFor(modelItem => item.AisleId)</a>
+                    <a asp-action="@item.AisleId">@Html.DisplayFor(modelItem => item.AisleId)</a>
                 </th>
                 <th>
                     @Html.DisplayFor(modelItem => item.Tag)
@@ -30,3 +30,6 @@
         }
     </tbody>
 </table>
+<a href="https://localhost:44309/Aisle/AddAisle">
+    <input type="button" value="Add an Aisle">
+</a>
